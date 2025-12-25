@@ -223,4 +223,64 @@ print(three_Sum(nums1))
 input("Press Enter to exit...")
 """
 #==========================================
+# Exercise 2 in test.py file
+#==========================================
+# Exercise 3
+class Book:
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+        self.is_checked_out = False
+        
+    def checkout(self):
+        self.is_checked_out = True
+    
+    def return_book(self):
+        self.is_checked_out = False
 
+    def __str__(self):
+         return f"{self.title} by {self.author} ({self.year}) (Checked out: {self.is_checked_out})"
+
+
+
+
+class Library:
+    def __init__(self):
+        self.collection = []
+    
+    def add_book(self,book):
+        self.collection.append(book)
+    
+    def list_books(self):
+        if not self.collection:
+            print("The library is empty.")
+            return
+        for book in self.collection:
+            status = "Checked out" if book.is_checked_out else "Available"
+            print(f"{book.title} by {book.author} ({book.year}) - {status}")            
+    
+    def find_book(self, title):
+        for book in self.collection:
+            if book.title.lower() == title.lower():
+                return book
+        return None
+
+    def remove_book(self, book):
+         if book in self.collection:
+             self.collection.remove(book)
+
+
+book1 = Book("1984", "George Orwell", 1949)
+book2 = Book("The Hobbit", "J.R.R. Tolkien", 1937)
+book3 = Book("The Great Gatsby", "F. Scott Fitzgerald", 1925)
+
+library = Library()
+library.add_book(book1)
+library.add_book(book2)
+
+found = library.find_book("1984")
+print(f"book found: {found}")
+print(f"=====================")
+library.list_books()
+input("Press Enter to exit...")

@@ -108,8 +108,9 @@ input("Press Enter to exit...")
 """
 
 #=====================================================#
-# Function to get a positive integer from the user
 # ex.2 best practice. 
+# Function to get a positive integer from the user
+"""
 def get_positive_integer(prompt):
     while True:
         try:
@@ -139,3 +140,87 @@ if num % check == 0:
     print(f"The number {num} can be evenly divided by {check}.")
 else:
     print(f"The number {num} cannot be evenly divided by {check}.")
+"""
+#=====================================================#
+# ex.3 best practice. 
+"""
+def finalList(check):
+    permanent = []
+    # If list length is 2 or less, return the list itself
+    if len(check) <= 2:
+        permanent = check
+        return permanent
+    else:
+        # Return a new list containing only the first and last elements
+        permanent = [check[0], check[-1]]
+        return permanent
+
+newList = []
+
+print("Enter numbers to add to list. Press Enter without input to finish.")
+
+while True:
+    user_input = input("Enter a number (or press Enter to finish): ")
+    if user_input == '':
+        # User chose to finish input
+        break
+    try:
+        num = int(user_input)
+        newList.append(num)
+    except ValueError:
+        print("Invalid input. Please enter a valid integer.")
+
+print(f"the original list {newList}")
+print(f"the final editted list {finalList(newList)}")
+"""
+#==========================================
+"""
+newList = []
+
+print("Please enter list elements ")
+while True:
+    num = input("Enter number :")
+    if num == "":
+        break
+    num = int(num)
+    newList.append(num)
+print(newList)
+
+input("Press Enter to exit...")
+"""
+#==========================================
+#================= Medium =================
+#==========================================
+# Exercise 1
+# Write a Python program to find three numbers from an array such that the sum of three numbers
+# equal to zero. Input : [-1,0,1,2,-1,-4] Output : [[-1, -1, 2], [-1, 0, 1]] 
+# Note : Find the unique triplets in the array.
+
+"""
+def three_Sum(num):
+    if len(num)<3: return []
+    num.sort()
+    result=[]
+    for i in range(len(num)-2):
+        left=i+1
+        right=len(num)-1
+        if i!=0 and num[i]==num[i-1]:continue
+        while left<right:
+            if num[left]+num[right]==-num[i]:
+                result.append([num[i],num[left],num[right]])
+                left=left+1
+                right=right-1
+                while num[left]==num[left-1] and left<right:left=left+1
+                while num[right]==num[right+1] and left<right: right=right-1
+            elif num[left]+num[right]<-num[i]:
+                left=left+1
+            else:
+                right=right-1
+    return result
+ 
+nums1=[-1,0,1,2,-1,-4]
+print(three_Sum(nums1))
+input("Press Enter to exit...")
+"""
+#==========================================
+

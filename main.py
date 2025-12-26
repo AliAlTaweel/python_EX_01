@@ -270,6 +270,10 @@ class Library:
          if book in self.collection:
              self.collection.remove(book)
 
+    def available_books(self):
+        return [book for book in self.collection if not book.is_checked_out]
+
+
 
 book1 = Book("1984", "George Orwell", 1949)
 book2 = Book("The Hobbit", "J.R.R. Tolkien", 1937)
@@ -280,7 +284,17 @@ library.add_book(book1)
 library.add_book(book2)
 
 found = library.find_book("1984")
+
 print(f"book found: {found}")
-print(f"=====================")
 library.list_books()
-input("Press Enter to exit...")
+#print([str(book) for book in library.available_books()])
+available = library.available_books()
+print("availabel books")
+if not available:
+    print("No available books.")
+else:
+    for book in available:
+        print(book)
+
+print(f"=====================\n")
+input("Press Enter to exit...\n")
